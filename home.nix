@@ -14,7 +14,7 @@
       smart-enter.package = smart-enter;
       chmod.package = chmod;
       diff.package = diff;
-      nord.pkg = nord;
+      nord.package = nord;
     };
     flavors = {
       inherit (pkgs.yaziPlugins) nord;
@@ -41,7 +41,7 @@
       pyright
       selene
       alejandra
-      json-lsp
+      spectral-language-server
       yaml-language-server
       beautysh
       prettierd
