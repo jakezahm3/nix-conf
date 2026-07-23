@@ -21,8 +21,9 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
-    nerdfonts
-    nodejs
+    pkgs.nerd-fonts.iosevka-term
+    pkgs.nodejs
+    pkgs.htop
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
