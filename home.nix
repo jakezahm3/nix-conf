@@ -25,6 +25,7 @@
     };
   };
 
+  programs.nix-ld.enable = true;
   programs.nvchad = {
     enable = true;
     backup = false;
@@ -65,7 +66,6 @@
 
 
     # You can configure extra options here (see the Configuration section)
-  };
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "jzahm";
@@ -96,7 +96,6 @@
     pkgs.python3
     pkgs.yazi
     pkgs.tree
-    pkgs.steam-run
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
