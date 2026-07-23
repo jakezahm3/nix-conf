@@ -5,6 +5,13 @@
 
   programs.nvchad = {
     enable = true;
+    extraPackages = with pkgs; [
+  ripgrep
+  lua-language-server
+  stylua
+  nodePackages.bash-language-server
+  nil
+  ];
     # You can configure extra options here (see the Configuration section)
   };
   # Home Manager needs a bit of information about you and the paths it should
