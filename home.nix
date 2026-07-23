@@ -58,6 +58,8 @@
       pkgs.vimPlugins.nvim-treesitter-parsers.rust
       pkgs.vimPlugins.nvim-treesitter-parsers.yaml
       pkgs.vimPlugins.nvim-treesitter-parsers.json
+      tree-sitter-cli
+      pkgs.lua51Packages.tree-sitter-cli
  ];
 
     # You can configure extra options here (see the Configuration section)
