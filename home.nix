@@ -47,7 +47,19 @@
       rustywind
       yamlfmt
       statix
-    ];
+      vimPlugins.windsurf-nvim
+      codeium
+      vimPlugins.nvim-treesitter.withAllGrammars
+      vimPlugins.nvim-treesitter
+      pkgs.vimPlugins.nvim-treesitter-parsers.nix
+      pkgs.vimPlugins.nvim-treesitter-parsers.python
+      pkgs.vimPlugins.nvim-treesitter-parsers.bash
+      pkgs.vimPlugins.nvim-treesitter-parsers.lua
+      pkgs.vimPlugins.nvim-treesitter-parsers.rust
+      pkgs.vimPlugins.nvim-treesitter-parsers.yaml
+      pkgs.vimPlugins.nvim-treesitter-parsers.json
+ ];
+
     # You can configure extra options here (see the Configuration section)
   };
   # Home Manager needs a bit of information about you and the paths it should
