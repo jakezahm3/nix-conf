@@ -47,6 +47,7 @@
       rustywind
       yamlfmt
       statix
+      copilot-language-server
     ];
     # You can configure extra options here (see the Configuration section)
   };
@@ -64,11 +65,6 @@
   # release notes.
   home.stateVersion = "26.05"; # Please read the comment before changing.
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (pkgs.lib.getName pkg) [
-      "copilot.vim"
-    ];
-
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
@@ -84,7 +80,6 @@
     pkgs.rustc
     pkgs.python3
     pkgs.yazi
-    pkgs.copilot-vim
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
