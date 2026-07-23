@@ -59,8 +59,10 @@
       pkgs.vimPlugins.nvim-treesitter-parsers.yaml
       pkgs.vimPlugins.nvim-treesitter-parsers.json
       pkgs.lua51Packages.tree-sitter-cli
-      pkgs.steam-run
  ];
+
+  };
+
 
     # You can configure extra options here (see the Configuration section)
   };
@@ -94,6 +96,7 @@
     pkgs.python3
     pkgs.yazi
     pkgs.tree
+    pkgs.steam-run
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -107,7 +110,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-
+  
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
