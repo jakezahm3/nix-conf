@@ -3,8 +3,9 @@
   inputs,
   pkgs,
   ...
-}: {
-  imports = [inputs.nix4nvchad.homeManagerModules.default];
+}:
+{
+  imports = [ inputs.nix4nvchad.homeManagerModules.default ];
 
   programs.yazi = {
     enable = true;
