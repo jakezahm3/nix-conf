@@ -17,10 +17,9 @@
   luarocks
   black
   pyright
-  gcc
-  cmake
   cargo
   rustc
+  python3
   ];
     # You can configure extra options here (see the Configuration section)
   };
