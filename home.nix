@@ -1,6 +1,12 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
+  imports = [ inputs.nix4nvchad.homeManagerModules.default ];
+
+  programs.nvchad = {
+    enable = true;
+    # You can configure extra options here (see the Configuration section)
+  };
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "jzahm";
