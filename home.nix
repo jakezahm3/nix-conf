@@ -1,21 +1,43 @@
-{ config, inputs, pkgs, ... }:
-
 {
-  imports = [ inputs.nix4nvchad.homeManagerModules.default ];
+  config,
+  inputs,
+  pkgs,
+  ...
+}: {
+  imports = [inputs.nix4nvchad.homeManagerModules.default];
+
+  programs.yazi = {
+    enable = true;
+    plugins = with pkgs.yaziPlugins; {
+      # Plugins that don't call setup() can be configured in one line
+      smart-enter.package = smart-enter;
+      chmod.package = chmod;
+      diff.package = diff;
+    };
+    flavors = {
+      inherit (pkgs.yaziPlugins) kanagawa;
+    };
+    theme = {
+      flavor = {
+        dark = "kanagawa";
+      };
+    };
+  };
 
   programs.nvchad = {
     enable = true;
+    backup = false;
     extraPackages = with pkgs; [
-        stylua
-        lua-language-server
-        lua-language-server
-        bash-language-server
-        rust-analyzer
-        ruff
-        jq
-        nil
-        black
-        pyright
+      stylua
+      lua-language-server
+      bash-language-server
+      rust-analyzer
+      ruff
+      jq
+      nil
+      black
+      pyright
+      selene
     ];
     # You can configure extra options here (see the Configuration section)
   };
@@ -62,48 +84,6 @@
     # '')
   ];
 
-  programs.yazi = {
-  enable = true;
-  settings = {
-    yazi = {
-      ratio = [
-        1
-        4
-        3
-      ];
-      sort_by = "natural";
-      sort_sensitive = true;
-      sort_reverse = false;
-      sort_dir_first = true;
-      linemode = "none";
-      show_hidden = true;
-      show_symlink = true;
-    };
-
-    preview = {
-      image_filter = "lanczos3";
-      image_quality = 90;
-      tab_size = 1;
-      max_width = 600;
-      max_height = 900;
-      cache_dir = "";
-      ueberzug_scale = 1;
-      ueberzug_offset = [
-        0
-        0
-        0
-        0
-      ];
-    };
-
-    tasks = {
-      micro_workers = 5;
-      macro_workers = 10;
-      bizarre_retry = 5;
-    };
-  };
-}
-
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -136,9 +116,9 @@
   #  /etc/profiles/per-user/jzahm/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-     EDITOR = "nvim";
-     SUDO_EDITOR = "nvim";
-     VISUAL = "nvim";
+    EDITOR = "nvim";
+    SUDO_EDITOR = "nvim";
+    VISUAL = "nvim";
   };
 
   # Let Home Manager install and manage itself.
