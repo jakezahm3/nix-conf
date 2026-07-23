@@ -9,8 +9,18 @@
   ripgrep
   lua-language-server
   stylua
-  nodePackages.bash-language-server
+  bash-language-server
+  rust-analyzer
+  ruff
+  jq
   nil
+  luarocks
+  black
+  pyright
+  gcc
+  cmake
+  cargo
+  rustc
   ];
     # You can configure extra options here (see the Configuration section)
   };
@@ -37,7 +47,8 @@
     pkgs.nerd-fonts.iosevka-term
     pkgs.nodejs
     pkgs.htop
-
+    pkgs.unzip
+    pkgs.ripgrep
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
