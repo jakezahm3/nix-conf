@@ -47,7 +47,6 @@
       rustywind
       yamlfmt
       statix
-      copilot-language-server
     ];
     # You can configure extra options here (see the Configuration section)
   };

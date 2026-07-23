@@ -81,11 +81,11 @@
     "nvchad-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1784827242,
-        "narHash": "sha256-qZwGCsC4l0aWPgqwrNgxj4kZrOjR1tSk9HM02sda/Pk=",
+        "lastModified": 1784832807,
+        "narHash": "sha256-G7ucZQ6fJupwbj04mX/9FMMdjYgIUKes71FQGN1Fbds=",
         "owner": "jakezahm3",
         "repo": "nvchad-conf",
-        "rev": "60178adde117022709344267ef355bf8425f1c03",
+        "rev": "a41c6fe4903bda25ea3d03131b1adfe7955068bc",
         "type": "github"
       },
       "original": {
