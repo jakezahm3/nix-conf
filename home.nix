@@ -6,21 +6,17 @@
   programs.nvchad = {
     enable = true;
     extraPackages = with pkgs; [
-  ripgrep
-  lua-language-server
-  stylua
-  bash-language-server
-  rust-analyzer
-  ruff
-  jq
-  nil
-  luarocks
-  black
-  pyright
-  cargo
-  rustc
-  python3
-  ];
+        stylua
+        lua-language-server
+        lua-language-server
+        bash-language-server
+        rust-analyzer
+        ruff
+        jq
+        nil
+        black
+        pyright
+    ];
     # You can configure extra options here (see the Configuration section)
   };
   # Home Manager needs a bit of information about you and the paths it should
@@ -48,6 +44,10 @@
     pkgs.htop
     pkgs.unzip
     pkgs.ripgrep
+    pkgs.cargo
+    pkgs.rustc
+    pkgs.python3
+    pkgs.yazi
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -61,6 +61,48 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  programs.yazi = {
+  enable = true;
+  settings = {
+    yazi = {
+      ratio = [
+        1
+        4
+        3
+      ];
+      sort_by = "natural";
+      sort_sensitive = true;
+      sort_reverse = false;
+      sort_dir_first = true;
+      linemode = "none";
+      show_hidden = true;
+      show_symlink = true;
+    };
+
+    preview = {
+      image_filter = "lanczos3";
+      image_quality = 90;
+      tab_size = 1;
+      max_width = 600;
+      max_height = 900;
+      cache_dir = "";
+      ueberzug_scale = 1;
+      ueberzug_offset = [
+        0
+        0
+        0
+        0
+      ];
+    };
+
+    tasks = {
+      micro_workers = 5;
+      macro_workers = 10;
+      bizarre_retry = 5;
+    };
+  };
+}
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
