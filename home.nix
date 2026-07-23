@@ -14,13 +14,14 @@
       smart-enter.package = smart-enter;
       chmod.package = chmod;
       diff.package = diff;
+      nord.pkg = nord;
     };
     flavors = {
-      inherit (pkgs.yaziPlugins) kanagawa;
+      inherit (pkgs.yaziPlugins) nord;
     };
     theme = {
       flavor = {
-        dark = "kanagawa";
+        dark = "nord";
       };
     };
   };
@@ -39,6 +40,14 @@
       black
       pyright
       selene
+      alejandra
+      json-lsp
+      yaml-language-server
+      beautysh
+      prettierd
+      rustywind
+      yamlfmt
+      statix
     ];
     # You can configure extra options here (see the Configuration section)
   };
