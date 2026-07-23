@@ -58,8 +58,8 @@
       pkgs.vimPlugins.nvim-treesitter-parsers.rust
       pkgs.vimPlugins.nvim-treesitter-parsers.yaml
       pkgs.vimPlugins.nvim-treesitter-parsers.json
-      tree-sitter-cli
       pkgs.lua51Packages.tree-sitter-cli
+      pkgs.steam-run
  ];
 
     # You can configure extra options here (see the Configuration section)
@@ -93,6 +93,7 @@
     pkgs.rustc
     pkgs.python3
     pkgs.yazi
+    pkgs.tree
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
