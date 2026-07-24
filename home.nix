@@ -74,7 +74,7 @@
       lua51Packages.tree-sitter-cli
       vimPlugins.blink-cmp
       vimPlugins.lspkind-nvim
-      ocamlPackages_latest.codicons
+      ocamlPackages_latest.janeStreet.codicons
     ];
   };
 
