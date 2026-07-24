@@ -73,6 +73,8 @@
       vimPlugins.nvim-treesitter-parsers.json
       lua51Packages.tree-sitter-cli
       vimPlugins.blink-cmp
+      vimPlugins.lspkind-nvim
+      ocamlPackages_latest.codicons
     ];
   };
 
