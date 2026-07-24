@@ -95,6 +95,13 @@
     pkgs.python3
     pkgs.yazi
     pkgs.tree
+    pkgs.gcc
+    pkgs.glibc
+    pkgs.curl
+    pkgs.gnumake
+    pkgs.zlib
+    pkgs.stdenv.cc.cc.lib  
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -132,7 +139,6 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-  };
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
