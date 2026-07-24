@@ -25,7 +25,6 @@
     };
   };
 
-  programs.nix-ld.enable = true;
   programs.nvchad = {
     enable = true;
     backup = false;
@@ -96,7 +95,6 @@
     pkgs.python3
     pkgs.yazi
     pkgs.tree
-    pkgs.ld-nix
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
