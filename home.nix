@@ -3,7 +3,54 @@
   inputs,
   pkgs,
   ...
-}: {
+}: 
+
+{ pkgs, ... }:
+
+let
+  # Create a wrapper that captures Neovim AND puts it into an FHS bubble for Windsurf
+  nvchadFHS = pkgs.buildFHSUserEnv {
+    name = "nvim"; # Overrides standard 'nvim' in your PATH
+    
+    targetPkgs = pkgs: with pkgs; [
+      neovim
+      
+      # Core utilities required by NvChad / Lazy.nvim
+      git
+      curl
+      unzip
+      cacert
+      ripgrep       # Used for Telescope searching in NvChad
+      fd
+
+      # Libraries requested by Windsurf / Codeium binary
+      glibc
+      stdenv.cc.cc.lib
+      zlib
+
+      # Required for compiling Treesitter parsers inside NvChad
+      gcc
+      gnumake
+    ];
+
+    # CRITICAL FOR NVCHAD: Ensure FHS bubble doesn't drop your user environment
+    profile = ''
+      export XDG_CONFIG_HOME="$HOME/.config"
+      export XDG_DATA_HOME="$HOME/.local/share"
+      export XDG_STATE_HOME="$HOME/.local/state"
+      export XDG_CACHE_HOME="$HOME/.cache"
+    '';
+
+    runScript = "nvim";
+  };
+in
+{
+  home.packages = [
+    nvchadFHS
+  ];
+}
+
+{
   imports = [inputs.nix4nvchad.homeManagerModules.default];
 
   programs.yazi = {
@@ -156,11 +203,6 @@
   #
   #  /etc/profiles/per-user/jzahm/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    SUDO_EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
