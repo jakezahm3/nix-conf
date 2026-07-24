@@ -40,6 +40,10 @@
     backup = false;
     extraPackages = with pkgs; [
       stylua
+      coreutils
+      gzip
+      curl
+      util-linux
       lua-language-server
       bash-language-server
       rust-analyzer
