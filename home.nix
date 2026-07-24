@@ -6,52 +6,54 @@
 }: 
 
 { pkgs, ... }:
-
-let
-  # Create a wrapper that captures Neovim AND puts it into an FHS bubble for Windsurf
-  nvchadFHS = pkgs.buildFHSUserEnv {
-    name = "nvim"; # Overrides standard 'nvim' in your PATH
-    
-    targetPkgs = pkgs: with pkgs; [
-      neovim
-      
-      # Core utilities required by NvChad / Lazy.nvim
-      git
-      curl
-      unzip
-      cacert
-      ripgrep       # Used for Telescope searching in NvChad
-      fd
-
-      # Libraries requested by Windsurf / Codeium binary
-      glibc
-      stdenv.cc.cc.lib
-      zlib
-
-      # Required for compiling Treesitter parsers inside NvChad
-      gcc
-      gnumake
-    ];
-
-    # CRITICAL FOR NVCHAD: Ensure FHS bubble doesn't drop your user environment
-    profile = ''
-      export XDG_CONFIG_HOME="$HOME/.config"
-      export XDG_DATA_HOME="$HOME/.local/share"
-      export XDG_STATE_HOME="$HOME/.local/state"
-      export XDG_CACHE_HOME="$HOME/.cache"
-    '';
-
-    runScript = "nvim";
-  };
-in
 {
-  home.packages = [
-    nvchadFHS
-  ];
-}
-
-{
+# let
+#   # Create a wrapper that captures Neovim AND puts it into an FHS bubble for Windsurf
+#   nvchadFHS = pkgs.buildFHSUserEnv {
+#     name = "nvim"; # Overrides standard 'nvim' in your PATH
+#
+#     targetPkgs = pkgs: with pkgs; [
+#       neovim
+#
+#       # Core utilities required by NvChad / Lazy.nvim
+#       git
+#       curl
+#       unzip
+#       cacert
+#       ripgrep       # Used for Telescope searching in NvChad
+#       fd
+#
+#       # Libraries requested by Windsurf / Codeium binary
+#       glibc
+#       stdenv.cc.cc.lib
+#       zlib
+#
+#       # Required for compiling Treesitter parsers inside NvChad
+#       gcc
+#       gnumake
+#     ];
+#
+#     # CRITICAL FOR NVCHAD: Ensure FHS bubble doesn't drop your user environment
+#     profile = ''
+#       export XDG_CONFIG_HOME="$HOME/.config"
+#       export XDG_DATA_HOME="$HOME/.local/share"
+#       export XDG_STATE_HOME="$HOME/.local/state"
+#       export XDG_CACHE_HOME="$HOME/.cache"
+#     '';
+#
+#     runScript = "nvim";
+#   };
+# in
+# {
+#   home.packages = [
+#     nvchadFHS
+#   ];
+# }
+#
   imports = [inputs.nix4nvchad.homeManagerModules.default];
+
+  programs.fish = {
+  enable = true;
 
   programs.yazi = {
     enable = true;
@@ -162,19 +164,15 @@ in
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-  
+   sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      NIX_LD = "${pkgs.glibc}/lib/ld-linux-x86-64.so.2";
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
     home.file = {
     # Generates a physical executable script path on disk for windsurf.nvim
-    ".config/nvim/nix-wrapper.sh" = {
-      executable = true;
-      text = ''
-        #!/bin/sh
-        exec "$@"
-      '';
-    };
-  };
 
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
