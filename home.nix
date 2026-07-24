@@ -3,9 +3,8 @@
   inputs,
   pkgs,
   ...
-}:
-{
-  imports = [ inputs.nix4nvchad.homeManagerModules.default ];
+}: {
+  imports = [inputs.nix4nvchad.homeManagerModules.default];
 
   # Fixed the Fish block parsing structure entirely
   programs.fish = {
@@ -73,6 +72,7 @@
       vimPlugins.nvim-treesitter-parsers.yaml
       vimPlugins.nvim-treesitter-parsers.json
       lua51Packages.tree-sitter-cli
+      vimPlugins.blink-cmp
     ];
   };
 
@@ -106,7 +106,7 @@
     NIX_LD = "${pkgs.glibc}/lib/ld-linux-x86-64.so.2";
   };
 
-  home.file = { };
+  home.file = {};
 
   programs.home-manager.enable = true;
 }
