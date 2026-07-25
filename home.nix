@@ -60,8 +60,6 @@
       rustywind
       yamlfmt
       statix
-      vimPlugins.windsurf-nvim
-      codeium
       vimPlugins.nvim-treesitter.withAllGrammars
       vimPlugins.nvim-treesitter
       vimPlugins.nvim-treesitter-parsers.nix
@@ -72,8 +70,8 @@
       vimPlugins.nvim-treesitter-parsers.yaml
       vimPlugins.nvim-treesitter-parsers.json
       lua51Packages.tree-sitter-cli
-      vimPlugins.blink-cmp
       vimPlugins.lspkind-nvim
+      vimPlugins.yazi-nvim
     ];
   };
 
