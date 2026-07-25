@@ -74,13 +74,14 @@
       lua51Packages.tree-sitter-cli
       vimPlugins.blink-cmp
       vimPlugins.lspkind-nvim
-      ocamlPackages_latest.janeStreet.codicons
     ];
   };
 
   home.username = "jzahm";
   home.homeDirectory = "/home/jzahm";
   home.stateVersion = "26.05";
+
+  nixpkgs.config.AllowBroken = true;
 
   home.packages = [
     pkgs.nerd-fonts.iosevka-term
@@ -100,6 +101,7 @@
     pkgs.zlib
     pkgs.stdenv.cc.cc.lib
     pkgs.steam-run
+    pkgs.jq
   ];
 
   home.sessionVariables = {
