@@ -72,6 +72,8 @@
       lua51Packages.tree-sitter-cli
       vimPlugins.lspkind-nvim
       vimPlugins.yazi-nvim
+      vimPlugins.lazygit-nvim
+      VimPlugins.rainbow-delimiters-nvim
     ];
   };
 
@@ -100,6 +102,7 @@
     pkgs.stdenv.cc.cc.lib
     pkgs.steam-run
     pkgs.jq
+    pkgs.lazygit
   ];
 
   home.sessionVariables = {
