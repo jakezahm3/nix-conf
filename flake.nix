@@ -8,7 +8,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-      
+  }; # <--- This closing brace was missing
+
   outputs =
     { self, nixpkgs, home-manager, ... }@inputs:
     let
@@ -27,4 +28,4 @@
         # to pass through arguments to home.nix
       };
     };
-};
+}
