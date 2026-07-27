@@ -9,20 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
       
-    # Your custom NvChad configuration repository or local folder
-    nvchad-config = {
-      url = "github:jakezahm3/nvchad-conf";
-      # Or for a local folder: url = "path:./nvim-config";
-      flake = false;
-    };
-
-    nix4nvchad = {
-      url = "github:nix-community/nix4nvchad";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nvchad-starter.follows = "nvchad-config"; # Overrides the starter
-    };
-  };
-
   outputs =
     { self, nixpkgs, home-manager, ... }@inputs:
     let
