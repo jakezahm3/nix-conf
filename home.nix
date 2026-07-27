@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  imports = [inputs.nix4nvchad.homeManagerModules.default];
 
+         
   # Fixed the Fish block parsing structure entirely
   programs.fish = {
     enable = true;
@@ -18,63 +18,6 @@
 
   programs.yazi = {
     enable = true;
-    plugins = with pkgs.yaziPlugins; {
-      smart-enter.package = smart-enter;
-      chmod.package = chmod;
-      diff.package = diff;
-      nord.package = nord;
-    };
-    flavors = {
-      inherit (pkgs.yaziPlugins) nord;
-    };
-    theme = {
-      flavor = {
-        dark = "nord";
-      };
-    };
-  };
-
-  programs.nvchad = {
-    enable = true;
-    backup = false;
-    extraPackages = with pkgs; [
-      stylua
-      coreutils
-      gzip
-      curl
-      util-linux
-      lua-language-server
-      bash-language-server
-      rust-analyzer
-      ruff
-      jq
-      nil
-      black
-      pyright
-      selene
-      alejandra
-      spectral-language-server
-      yaml-language-server
-      beautysh
-      prettierd
-      rustywind
-      yamlfmt
-      statix
-      vimPlugins.nvim-treesitter.withAllGrammars
-      vimPlugins.nvim-treesitter
-      vimPlugins.nvim-treesitter-parsers.nix
-      vimPlugins.nvim-treesitter-parsers.python
-      vimPlugins.nvim-treesitter-parsers.bash
-      vimPlugins.nvim-treesitter-parsers.lua
-      vimPlugins.nvim-treesitter-parsers.rust
-      vimPlugins.nvim-treesitter-parsers.yaml
-      vimPlugins.nvim-treesitter-parsers.json
-      lua51Packages.tree-sitter-cli
-      vimPlugins.lspkind-nvim
-      vimPlugins.yazi-nvim
-      vimPlugins.lazygit-nvim
-      VimPlugins.rainbow-delimiters-nvim
-    ];
   };
 
   home.username = "jzahm";
@@ -102,8 +45,47 @@
     pkgs.stdenv.cc.cc.lib
     pkgs.steam-run
     pkgs.jq
-    pkgs.lazygit
-  ];
+    pkgs.lazygit-nvim
+    pkgs.stylua
+    pkgs.black
+    pkgs.rustfmt
+    pkgs.shfmt
+    pkgs.nixpkgs-fmt
+    pkgs.luaPackages.tree-sitter-cli
+(pkgs.neovim.override {
+  configure = {
+  withPython3 = true; # see `:h g:python3_host_prog`
+  withNodeJs = false;
+  withRuby = false;
+   customRC = ''
+    '';
+    packages.myPlugins = with pkgs.vimPlugins; {
+      start = [
+	    nvim-treesitter.withAllGrammars
+	    astrocore
+	    astroui
+	    astrolsp
+	    astrotheme
+	    lazygit
+            git
+            gnumake
+            unzip
+            cargo
+            nodejs
+            tree-sitter
+            ripgrep
+            fd
+	    nixd
+            nixfmt
+	    lua_ls
+	    conform
+	    null_ls
+          ];
+	opt = [ ];
+    };
+  };
+})
+];
 
   home.sessionVariables = {
     EDITOR = "nvim";
