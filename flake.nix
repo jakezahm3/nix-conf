@@ -27,4 +27,4 @@
         # to pass through arguments to home.nix
       };
     };
-}
+};
